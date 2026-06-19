@@ -104,7 +104,7 @@ function renderSummary() {
 
 function buildMessage() {
   return [
-    "Юлия ответила на приглашение.",
+    "Кейтлин ответила на приглашение.",
     `Дата: ${formatDate(state.date)}`,
     `Время: ${state.time}`,
     `Пожелания: ${state.wishes.join(", ")}`,
