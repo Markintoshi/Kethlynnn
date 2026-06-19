@@ -7,6 +7,7 @@ const state = {
 };
 
 const panels = [...document.querySelectorAll(".panel")];
+const emojiRain = document.querySelector("#emoji-rain");
 const acceptBtn = document.querySelector("#accept-btn");
 const declineBtn = document.querySelector("#decline-btn");
 const declineHint = document.querySelector("#decline-hint");
@@ -27,6 +28,7 @@ const declineMessages = [
   "Кажется, кнопка тоже за «принять».",
   "Сегодня сценарий только с хорошим финалом.",
 ];
+const emojiPool = ["✨", "🌸", "🎈", "🫶", "🎉", "🍀", "🌟", "💌", "🌈", "🥳"];
 
 function showStep(stepName) {
   panels.forEach((panel) => {
@@ -53,6 +55,39 @@ function moveDeclineButton() {
   declineBtn.style.top = `${nextY}px`;
   declineHint.textContent =
     declineMessages[Math.floor(Math.random() * declineMessages.length)];
+}
+
+function spawnEmoji() {
+  const drop = document.createElement("span");
+  const duration = 7000 + Math.random() * 5000;
+  const size = 18 + Math.random() * 18;
+  const left = Math.random() * 100;
+  const drift = `${Math.random() * 90 - 45}px`;
+  const spin = `${Math.random() * 160 - 80}deg`;
+
+  drop.className = "emoji-drop";
+  drop.textContent = emojiPool[Math.floor(Math.random() * emojiPool.length)];
+  drop.style.left = `${left}vw`;
+  drop.style.fontSize = `${size}px`;
+  drop.style.animationDuration = `${duration}ms`;
+  drop.style.setProperty("--drift", drift);
+  drop.style.setProperty("--spin", spin);
+
+  emojiRain.append(drop);
+  window.setTimeout(() => drop.remove(), duration);
+}
+
+function startEmojiRain() {
+  for (let index = 0; index < 6; index += 1) {
+    window.setTimeout(spawnEmoji, index * 450);
+  }
+
+  window.setInterval(() => {
+    const burst = 1 + Math.floor(Math.random() * 2);
+    for (let index = 0; index < burst; index += 1) {
+      window.setTimeout(spawnEmoji, index * 260);
+    }
+  }, 1500);
 }
 
 function validateCalendar() {
@@ -203,3 +238,4 @@ saveBtn.addEventListener("click", async () => {
 
 setMinDate();
 moveDeclineButton();
+startEmojiRain();

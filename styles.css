@@ -37,6 +37,26 @@ body {
   overflow: hidden;
 }
 
+.emoji-rain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.emoji-drop {
+  position: absolute;
+  top: -12vh;
+  font-size: 24px;
+  line-height: 1;
+  opacity: 0.9;
+  will-change: transform;
+  animation-name: emoji-fall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
 .ambient {
   position: fixed;
   border-radius: 999px;
@@ -73,6 +93,7 @@ body {
   border-radius: 32px;
   padding: 26px 20px 22px;
   position: relative;
+  z-index: 1;
 }
 
 .panel {
@@ -295,5 +316,21 @@ h2 {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes emoji-fall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translate3d(var(--drift), 120vh, 0) rotate(var(--spin));
+    opacity: 0;
   }
 }
