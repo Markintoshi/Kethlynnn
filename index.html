@@ -75,16 +75,27 @@
         <section class="panel" data-step="wishes">
           <p class="eyebrow">Шаг 2</p>
           <h2>Что больше хочется?</h2>
-          <p class="lead">Можно выбрать несколько вариантов.</p>
+          <p class="lead">Можно выбрать несколько вариантов и оставить пожелание по месту.</p>
 
           <div class="wish-grid" id="wish-grid">
-            <button class="wish-card" data-wish="Кофе" type="button">Кофе</button>
-            <button class="wish-card" data-wish="Пицца" type="button">Пицца</button>
-            <button class="wish-card" data-wish="Суши" type="button">Суши</button>
-            <button class="wish-card" data-wish="Прогулка" type="button">Прогулка</button>
-            <button class="wish-card" data-wish="Спорт" type="button">Спорт</button>
-            <button class="wish-card" data-wish="Кино" type="button">Кино</button>
+            <button class="wish-card" data-wish="Кофе" type="button">☕ Кофе</button>
+            <button class="wish-card" data-wish="Пицца" type="button">🍕 Пицца</button>
+            <button class="wish-card" data-wish="Суши" type="button">🍣 Суши</button>
+            <button class="wish-card" data-wish="Прогулка" type="button">🌿 Прогулка</button>
+            <button class="wish-card" data-wish="Спорт" type="button">🎾 Спорт</button>
+            <button class="wish-card" data-wish="Кино" type="button">🎬 Кино</button>
           </div>
+
+          <label class="field">
+            <span class="field-label">Любимое место, если есть идея</span>
+            <input
+              class="place-input"
+              id="place-input"
+              type="text"
+              maxlength="80"
+              placeholder="Например: уютная кофейня у моря"
+            />
+          </label>
 
           <button class="button button-primary button-wide" id="to-summary" type="button">
             Посмотреть итог
@@ -117,7 +128,8 @@
           <p class="lead" id="thanks-text">
             Выбор сохранён. Теперь осталось только дождаться самого свидания.
           </p>
-          <p class="signature">С любовью к деталям, в этот день.</p>
+          <p class="signature">Благодарю за внимание и время!</p>
+          <p class="signature">Отзыв можно оставить в личных сообщениях.</p>
         </section>
       </main>
     </div>

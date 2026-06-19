@@ -4,6 +4,7 @@ const state = {
   date: "",
   time: "",
   wishes: [],
+  place: "",
 };
 
 const panels = [...document.querySelectorAll(".panel")];
@@ -15,6 +16,7 @@ const ctaZone = document.querySelector("#cta-zone");
 const dateInput = document.querySelector("#date-input");
 const timeInput = document.querySelector("#time-input");
 const wishGrid = document.querySelector("#wish-grid");
+const placeInput = document.querySelector("#place-input");
 const toWishesBtn = document.querySelector("#to-wishes");
 const toSummaryBtn = document.querySelector("#to-summary");
 const summaryCard = document.querySelector("#summary-card");
@@ -134,6 +136,10 @@ function renderSummary() {
       <span class="summary-label">Пожелания</span>
       <span class="summary-value">${state.wishes.join(", ")}</span>
     </div>
+    <div class="summary-row">
+      <span class="summary-label">Любимое место</span>
+      <span class="summary-value">${state.place || "Без пожеланий"}</span>
+    </div>
   `;
 }
 
@@ -143,6 +149,7 @@ function buildMessage() {
     `Дата: ${formatDate(state.date)}`,
     `Время: ${state.time}`,
     `Пожелания: ${state.wishes.join(", ")}`,
+    `Любимое место: ${state.place || "Без пожеланий"}`,
   ].join("\n");
 }
 
@@ -185,6 +192,10 @@ dateInput.addEventListener("change", (event) => {
 
 timeInput.addEventListener("change", (event) => {
   state.time = event.target.value;
+});
+
+placeInput.addEventListener("input", (event) => {
+  state.place = event.target.value.trim();
 });
 
 wishGrid.addEventListener("click", (event) => {
