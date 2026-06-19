@@ -42,7 +42,7 @@ body {
   inset: 0;
   pointer-events: none;
   overflow: hidden;
-  z-index: 0;
+  z-index: 3;
 }
 
 .emoji-drop {
@@ -51,6 +51,7 @@ body {
   font-size: 24px;
   line-height: 1;
   opacity: 0.9;
+  text-shadow: 0 8px 18px rgba(35, 24, 21, 0.12);
   will-change: transform;
   animation-name: emoji-fall;
   animation-timing-function: linear;
@@ -145,8 +146,7 @@ h2 {
 .hero-note span,
 .summary-card,
 .field,
-.wish-card,
-.chip {
+.wish-card {
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.72);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
@@ -239,18 +239,22 @@ h2 {
   font-weight: 700;
 }
 
-.time-grid,
+.time-input {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 18px;
+  font-weight: 700;
+}
+
 .wish-grid {
   display: grid;
   gap: 12px;
   margin-top: 18px;
 }
 
-.time-grid {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.chip,
 .wish-card {
   min-height: 56px;
   border-radius: 18px;
@@ -267,7 +271,6 @@ h2 {
   padding: 18px 12px;
 }
 
-.chip.is-selected,
 .wish-card.is-selected {
   background: linear-gradient(135deg, #fff0e5 0%, #ffd0b2 100%);
   border-color: rgba(233, 78, 47, 0.22);

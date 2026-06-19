@@ -13,7 +13,7 @@ const declineBtn = document.querySelector("#decline-btn");
 const declineHint = document.querySelector("#decline-hint");
 const ctaZone = document.querySelector("#cta-zone");
 const dateInput = document.querySelector("#date-input");
-const timeGrid = document.querySelector("#time-grid");
+const timeInput = document.querySelector("#time-input");
 const wishGrid = document.querySelector("#wish-grid");
 const toWishesBtn = document.querySelector("#to-wishes");
 const toSummaryBtn = document.querySelector("#to-summary");
@@ -183,15 +183,8 @@ dateInput.addEventListener("change", (event) => {
   state.date = event.target.value;
 });
 
-timeGrid.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-time]");
-  if (!button) return;
-
-  state.time = button.dataset.time;
-
-  timeGrid.querySelectorAll("[data-time]").forEach((chip) => {
-    chip.classList.toggle("is-selected", chip === button);
-  });
+timeInput.addEventListener("change", (event) => {
+  state.time = event.target.value;
 });
 
 wishGrid.addEventListener("click", (event) => {
